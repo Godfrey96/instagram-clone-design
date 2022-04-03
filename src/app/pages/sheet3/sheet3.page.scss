@@ -1,0 +1,24 @@
+ion-thumbnail.photo {
+    align-self: flex-start;
+    position: relative;
+    min-width: 4rem;
+    min-height: 4rem;
+    border-radius: 50%;
+    padding: 5px;
+
+    img {
+        border-radius: 50%;
+    }
+}
+
+ion-icon{
+    font-size: 4rem;
+}
+
+.round{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    background: var(--ion-color-primary);
+}

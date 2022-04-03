@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <strong>Activity</strong>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>
+        <strong>This Week</strong>
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let item of activities">
+      <ion-thumbnail slot="start" class="photo">
+        <img [src]="item?.profilePic" />
+      </ion-thumbnail>
+
+      <ion-label>
+        {{ item?.username }}
+        <p class="ion-text-wrap">
+          <ion-text color="medium" *ngIf="item?.activity === 'follow'">
+            started following you
+          </ion-text>
+          <ion-text color="medium" *ngIf="item?.activity === 'comment'">
+            <span>Commented on your post:</span> {{ item?.comment }}
+          </ion-text>
+          <ion-text class="time">{{ item?.time }}</ion-text>
+        </p>
+      </ion-label>
+      <ion-button *ngIf="item?.activity === 'follow'" mode="ios" slot="end" color="secondary">Follow back</ion-button>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

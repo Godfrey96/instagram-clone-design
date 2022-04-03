@@ -1,0 +1,12 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Create</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let item of items" lines="full">
+    <ion-icon [name]="item.icon" slot="start" slot="start" color="primary"></ion-icon>
+    <ion-label slot="start" color="primary">{{ item.text }}</ion-label>
+  </ion-item>
+</ion-content>

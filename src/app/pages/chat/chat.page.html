@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <strong>Mogau</strong>
+      <ion-icon color="dark" name="chevron-down-outline" (click)="openAccount()"></ion-icon>
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button size="small">
+        <ion-icon name="videocam-outline"></ion-icon>
+      </ion-button>
+      <ion-button size="small">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div>
+    <ion-searchbar></ion-searchbar>
+  </div>
+
+  <ion-item lines="none">
+    <ion-label>
+      <strong>Messages</strong>
+    </ion-label>
+    <ion-text fill="clear" mode="ios" slot="end" color="secondary">
+      <strong>Requests</strong>
+    </ion-text>
+  </ion-item>
+
+  <ion-list lines="none">
+
+    <ion-item *ngFor="let item of users">
+      <ion-thumbnail slot="start" class="photo">
+        <img [src]="item?.profilePic" />
+      </ion-thumbnail>
+
+      <ion-label>
+        {{ item?.username }}
+        <p class="ion-text-wrap">
+          <ion-text color="medium" *ngIf="item?.activity === 'follow'">
+            Active
+          </ion-text>
+          <ion-text class="time">{{ item?.time }}</ion-text>
+        </p>
+      </ion-label>
+      <ion-button fill="clear" mode="ios" slot="end" color="primary">
+        <ion-icon name="camera-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

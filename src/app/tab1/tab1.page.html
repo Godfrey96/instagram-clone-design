@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="../../assets/images/instagram-logo.png" width="100px" alt="">
+
+    <ion-buttons slot="end">
+      <ion-button size="small" (click)="presentPopover($event)">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button size="small" (click)="openActivity()">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-button>
+      <ion-button size="small" (click)="openChat()">
+        <ion-icon name="send-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-item lines="full">
+      <ion-row>
+        <ion-slides [options]="slideOpts">
+          <ion-slide *ngFor="let user of users; let i = index">
+            <ion-col>
+              <ion-thumbnail class="avatar">
+                <ion-icon *ngIf="i === 0" name="add" color="dark"></ion-icon>
+                <img *ngIf="i > 0" src="{{ user?.profilePic }}" />
+              </ion-thumbnail>
+              <ion-text class="ion-text-center" style="font-size: small;">
+                {{ user?.username }}
+              </ion-text>
+            </ion-col>
+          </ion-slide>
+        </ion-slides>
+      </ion-row>
+    </ion-item>
+  </ion-toolbar>
+
+  <div *ngFor="let post of postService.posts" class="post ion-margin-top">
+    <ion-row>
+      <ion-col size="8" class="ion-align-items-center col">
+        <ion-avatar>
+          <ion-img src="{{ post.user.profilePic }}"></ion-img>
+        </ion-avatar>
+        <ion-text style="font-size: medium; margin-left: .5rem;">
+          <strong>{{ post.user.username }}</strong>
+        </ion-text>
+      </ion-col>
+
+      <ion-col size="2"></ion-col>
+
+      <ion-col size="2">
+        <ion-button size="small" fill="clear" (click)="open()">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <img src="{{ post.data.picture }}" alt="">
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-button size="small" fill="clear">
+          <ion-icon name="heart-outline"></ion-icon>
+        </ion-button>
+        <ion-button size="small" fill="clear">
+          <ion-icon name="chatbubble-outline"></ion-icon>
+        </ion-button>
+        <ion-button size="small" fill="clear">
+          <ion-icon name="send-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="4"></ion-col>
+
+      <ion-col size="2">
+        <ion-button size="small" fill="clear">
+          <ion-icon name="bookmark-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <div style="font-size: medium; margin-left: 1rem;">
+      <ion-text>
+        <strong>{{ post.data.like }} likes</strong>
+      </ion-text>
+    </div>
+
+    <div style="font-size: small; margin-left: 1rem;">
+      <ion-text>
+        View all {{ post.data.comments }} comments
+      </ion-text>
+    </div>
+
+    <ion-text style="font-size: small; margin-left: 1rem;">
+      {{ post.data.ago }} ago
+    </ion-text>
+  </div>
+
+</ion-content>

@@ -1,0 +1,6 @@
+<ion-content>
+  <ion-item *ngFor="let item of items" lines="full">
+    <ion-icon [name]="item.icon" slot="start" slot="end"></ion-icon>
+    <ion-label slot="start">{{ item.text }}</ion-label>
+  </ion-item>
+</ion-content>

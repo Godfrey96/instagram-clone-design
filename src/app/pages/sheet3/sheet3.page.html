@@ -1,0 +1,11 @@
+<ion-content>
+  <ion-item *ngFor="let item of items" lines="none">
+    <ion-thumbnail *ngIf="item?.profilePic" slot="start" class="photo">
+      <img [src]="item?.profilePic" />
+    </ion-thumbnail>
+    <ion-icon *ngIf="item?.icon" [name]="item.icon" slot="start" color="primary"></ion-icon>
+    <div class="round" slot="end"></div>
+    <!-- <ion-icon name="radio-button-on-outline" slot="end"></ion-icon> -->
+    <ion-label slot="start">{{ item.text }}</ion-label>
+  </ion-item>
+</ion-content>
